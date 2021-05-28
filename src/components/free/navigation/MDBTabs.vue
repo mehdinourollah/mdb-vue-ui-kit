@@ -94,6 +94,11 @@ export default {
     onUnmounted(() => {
       off(window, "resize", handleWindowResize);
     });
+    
+    // when changing the model view inside <MDBTABS v-model... it reacts and change the active tab
+    watchEffect(() => { 
+      updateActiveTab(null, props.modelValue);
+    });
 
     return {
       isVertical,
